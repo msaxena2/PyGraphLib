@@ -1,11 +1,10 @@
 '''
 Created on Sep 26, 2013
 
-Graph library to create a graph
-directional graphs with weighted/un-weighted edges
-and non directional graphs can be created
+Graph library to create
+directional/undirectional graphs with weighted/un-weighted edges
 
-@author: Manasvi
+@author: Manasvi Saxena
 '''
 from operator import itemgetter
 from Queue import PriorityQueue
@@ -216,14 +215,7 @@ class graph:
             return NODES_NOT_CONNECTED
         del self.graph_connections_dict[origin_node_key][destination_node_key]
         return OPERATION_SUCCESSFUL
-    
-        
-        
-    def print_dict(self):
-            print self.graph_connections_dict
-            print self.data_dict
-            
-        
+                   
     def get_degree(self, node_key):
         '''
         Returns The number degree of specified node
