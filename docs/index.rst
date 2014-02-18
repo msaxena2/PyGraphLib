@@ -6,10 +6,9 @@
 Welcome to Python Graph Lib's documentation!
 ============================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
+   
 .. automodule:: PyGraphLib
 
 .. autoclass:: graph
