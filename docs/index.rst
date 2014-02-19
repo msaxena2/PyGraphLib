@@ -8,11 +8,11 @@ Welcome to Python Graph Library's documentation!
 
 .. toctree::
    :maxdepth: 2
-.. automodule:: PyGraphLib
+
+.. currentmodule:: PyGraphLib
 
 .. autoclass:: graph
 	:members:
-
 
 
 Indices and tables
