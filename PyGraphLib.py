@@ -284,3 +284,26 @@ class graph:
                 path_list.reverse()
                 return path_list
     
+
+    def create_dot_file(self, filename):
+        """
+        Outputs a file in dot format that can be used for generating
+        images of the graph (see http://www.graphviz.org for more info)
+
+        :param filename: name of the file to write the output to
+        :return: success of the operation
+        """
+        output_file = open(filename, "w")
+        output_file.write("digraph G {\n")
+
+        for node in self.graph_connections_dict:
+
+            node_specific_dict = self.graph_connections_dict[node]
+
+            for neighbor in node_specific_dict:
+                output_file.write(str(node) + str(" -> ") + str(neighbor))
+                output_file.write(" [label=%s];\n" % node_specific_dict[neighbor])
+
+        output_file.write("}")
+        output_file.close()
+        return OPERATION_SUCCESSFUL
