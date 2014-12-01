@@ -8,6 +8,7 @@ directional/undirectional graphs with weighted/un-weighted edges
 """
 from operator import itemgetter
 from Queue import PriorityQueue
+from Queue import Queue
 import sys
 #Constants defining error codes
 KEY_NOT_FOUND_ERROR = 'key not present in graph'
@@ -307,3 +308,38 @@ class graph:
         output_file.write("}")
         output_file.close()
         return OPERATION_SUCCESSFUL
+
+
+    def partitions(self):
+        """
+        Returns a list of all disconnected sub-graphs in the graph.
+
+        :return: a list of sub-graphs in the graph where each
+        sub-graph is represented as a list of nodes that belong to the sub-graph
+        """
+        visited = dict()
+        results = list()
+        while len(visited) != len(self.graph_connections_dict):
+
+            # find a node that has not been visited
+            curr = None
+            for node in self.graph_connections_dict:
+                if not visited.get(node):
+                    curr = node
+                    break
+
+            # using BFS, find all other nodes that are a part of this sub-graph
+            q = Queue()
+            q.put(curr)
+            partition = list()
+            while q.qsize() > 0:
+                curr = q.get()
+                partition.append(curr)
+                visited[curr] = True
+
+                for neighbor in self.graph_connections_dict[curr]:
+                    if not visited.get(neighbor):
+                        q.put(neighbor)
+
+            results.append(partition)
+        return results
